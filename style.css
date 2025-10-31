@@ -1,0 +1,167 @@
+/* ============================================
+   TÜM SAYFA İÇİN GENEL AYARLAR
+   ============================================ */
+
+/* Tüm öğelerde kutu modelini düzenler. 
+   Böylece padding ve border eklenince genişlik taşmaz. 
+   Ayrıca genel yazı tipini Arial olarak ayarlıyoruz. */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Sayfa genel ayarları:
+   - Arka plan beyaz
+   - Varsayılan boşlukları (margin/padding) sıfırlıyoruz */
+body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   GOOGLE LOGOSU BÖLÜMÜ
+   ============================================ */
+
+/* Logoyu yatayda ortalamak için flex kullanıyoruz.
+   Yukarıdan boşluk bırakmak için padding-top ekledik. */
+.logo {
+  display: flex;
+  justify-content: center;
+  padding-top: 200px; /* Yukarıdan 200px boşluk */
+}
+
+/* Logonun boyutlarını ayarlıyoruz.
+   Orijinal Google logosu genişliği 272px’tir.
+   height:auto ile orantılı küçülür/büyür. */
+.logo img {
+  width: 272px;
+  height: auto;
+  display: block; /* Tarayıcıya boşluk ekletmemek için */
+}
+
+/* ============================================
+   ARAMA FORMU (ORTA KISIM)
+   ============================================ */
+
+/* Arama alanını ortalamak için width belirledik
+   ve margin: 0 auto; diyerek ortaladık. */
+.search {
+  width: 480px;      /* Google'ın masaüstü arama kutusu genişliği */
+  margin: 0 auto;    /* Yatay ortalama */
+}
+
+/* Arama kutusunun dış çerçevesi (ikonlar dahil) */
+.search-bar {
+  position: relative;     /* İçindeki ikonların konumlandırılmasına izin verir */
+  display: flex;          /* Input ve ikonlar aynı satırda hizalanır */
+  align-items: center;    /* Dikeyde ortalama */
+  margin-top: 25px;       /* Logodan sonra boşluk */
+}
+
+/* ============================================
+   ARAMA KUTUSU (INPUT ALANI)
+   ============================================ */
+
+/* Arama kutusunun temel görünümü */
+.search-box {
+  width: 100%;                          /* Arama çubuğu container kadar genişler */
+  padding: 10px 70px 10px 45px;         /* İç boşluklar (ikonlara yer bırakmak için) */
+  border: 1px solid #dfe1e5;            /* İnce gri kenarlık */
+  border-radius: 24px;                  /* Yuvarlatılmış köşeler */
+  background-color: white;              /* Beyaz zemin */
+  box-shadow: 0 1px 6px rgba(32,33,36,0.28); /* Hafif gölge efekti */
+  font-size: 16px;                      /* Yazı boyutu */
+}
+
+/* Arama kutusuna tıklanıldığında (focus durumu)
+   - Mavi border efekti ve hafif mavi gölge */
+.search-box:focus {
+  outline: none;                                      /* Varsayılan mavi çerçeveyi kaldırır */
+  border-color: rgba(66,133,244,0.6);                 /* Mavi tonlu kenarlık */
+  box-shadow: 0 1px 6px rgba(66,133,244,0.25);        /* Mavi gölge */
+}
+
+/* ============================================
+   İKONLAR (SOL VE SAĞ)
+   ============================================ */
+
+/* Sol taraftaki büyüteç ikonu:
+   - absolute ile input’un içine konumlandırıyoruz
+   - pointer-events:none ile tıklanabilirliğini kapatıyoruz 
+     (böylece input aktif kalır) */
+.icon-left {
+  position: absolute;
+  left: 15px;           /* Soldan 15px uzaklık */
+  font-size: 18px;      /* İkon boyutu */
+  color: #9aa0a6;       /* Gri ton (Google rengi) */
+  pointer-events: none; /* İkona tıklanamaz hale getir */
+}
+
+/* Sağ taraftaki mikrofon ve kamera ikonları:
+   - absolute ile input içine hizalanır
+   - flex ile yan yana dizilir
+   - pointer-events:none ile pasif yapılır (sadece görsel amaçlı) */
+.icon-right {
+  position: absolute;
+  right: 15px;          /* Sağdan 15px uzaklık */
+  display: flex;        /* İkonlar yan yana */
+  gap: 10px;            /* Aralarında 10px boşluk */
+  color: #9aa0a6;       /* Gri ton */
+  font-size: 18px;
+  pointer-events: none; /* Tıklanamaz hale getir */
+}
+
+/* ============================================
+   BUTONLAR (ARAMA ALTINDAKİ)
+   ============================================ */
+
+/* Buton grubunu ortalamak için flex kullanıyoruz.
+   gap ile aralarına mesafe bırakıyoruz. */
+.buttons {
+  display: flex;
+  justify-content: center; /* Ortaya hizala */
+  gap: 10px;               /* Aralarındaki boşluk */
+  margin-top: 25px;        /* Arama kutusundan sonra boşluk */
+}
+
+/* Butonların temel görünümü:
+   - Gri tonlu arka plan
+   - Hafif kenarlık
+   - Yuvarlatılmış köşeler */
+button {
+  padding: 8px 16px;           /* İç boşluk (yatay-dikey) */
+  border: 1px solid #f8f9fa;   /* Açık gri kenarlık */
+  background-color: #f8f9fa;   /* Arka plan */
+  border-radius: 4px;          /* Köşeleri yuvarlat */
+  cursor: pointer;             /* Üzerine gelince imleç değişsin */
+  font-size: 14px;             /* Yazı boyutu */
+}
+
+/* Butonun üzerine gelince (hover durumu)
+   Kenarlık biraz koyulaşır */
+button:hover {
+  border: 1px solid #dadce0;
+}
+
+/* ============================================
+   RESPONSIVE TASARIM (MOBİL UYUMLU)
+   ============================================ */
+
+/* Ekran genişliği 600px’ten küçükse (mobil):
+   - Logo biraz yukarı alınır
+   - Arama kutusu sayfanın %90’ını kaplar
+   - Yazılar ve padding biraz küçülür */
+@media (max-width: 600px) {
+  .logo {
+    padding-top: 100px; /* Yukarıdan boşluk azalt */
+  }
+  .search {
+    width: 90%;         /* Genişliği oransal yap */
+  }
+  .search-box {
+    font-size: 15px;    /* Yazı boyutu küçült */
+    padding-left: 40px; /* Sol boşluğu daralt */
+    padding-right: 60px;/* Sağ boşluğu daralt */
+  }
+}
